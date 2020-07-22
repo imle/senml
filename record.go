@@ -82,3 +82,18 @@ func (r *Record) Equals(r2 *Record) bool {
 func (r *Record) GoTime() time.Time {
 	return GoTime(r.Time)
 }
+
+// Returns the value as an interface which should be printable
+func (r *Record) GetValue() interface{} {
+	if r.Value != nil {
+		return *r.Value
+	} else if len(r.StringValue) > 0 {
+		return r.StringValue
+	} else if r.DataValue != nil {
+		return r.DataValue
+	} else if r.BoolValue != nil {
+		return *r.BoolValue
+	} else if r.Sum != nil {
+		return *r.Sum
+	}
+}
