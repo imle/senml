@@ -96,4 +96,5 @@ func (r *Record) GetValue() interface{} {
 	} else if r.Sum != nil {
 		return *r.Sum
 	}
+	return ""
 }
